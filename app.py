@@ -10,7 +10,7 @@ scaler = joblib.load('scaler.pkl')
 st.set_page_config(page_title="Loan Approval Predictor", page_icon="🏦")
 
 st.title("🏦 Loan Approval Predictor")
-st.write("Apni details bharo aur turant pata karo loan approve hoga ya nahi")
+st.write("Write your details below to check if your loan will be approved or not.")
 
 # --- Form Inputs ---
 col1, col2 = st.columns(2)
