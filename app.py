@@ -1,9 +1,9 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
 import joblib
 
-# Saved model aur scaler load karo
+
 model = joblib.load('loan_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Loan Approval Predictor", page_icon="🏦")
 st.title("🏦 Loan Approval Predictor")
 st.write("Write your details below to check if your loan will be approved or not.")
 
-# --- Form Inputs ---
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -30,10 +30,10 @@ with col2:
     loan_term = st.selectbox("Loan Term (months)", [360, 180, 120, 60, 300, 240, 84, 36, 12])
     credit_history = st.selectbox("Credit History", ["Good (1)", "Bad (0)"])
 
-# --- Predict Button ---
+
 if st.button("Predict Loan Approval"):
 
-    # Text inputs ko wahi numbers mein convert karo jo training ke time the
+ 
     gender_val = 1 if gender == "Male" else 0
     married_val = 1 if married == "Yes" else 0
     dependents_val = 3 if dependents == "3+" else int(dependents)
@@ -63,7 +63,7 @@ if st.button("Predict Loan Approval"):
         'LoanAmount_log': [np.log(loan_amount)]
     })
 
-    # Scale karo aur predict karo
+
     input_scaled = scaler.transform(input_data)
     prediction = model.predict(input_scaled)
     probability = model.predict_proba(input_scaled)
